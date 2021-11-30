@@ -1,6 +1,6 @@
 import fs from "fs";
 import { commands } from "./commands/commands";
-import { discord } from "./discord";
+import { discord } from "./models/discord";
 
 const CLIENT_SECRET = fs.readFileSync("./.CLIENT_SECRET", "utf8");
 

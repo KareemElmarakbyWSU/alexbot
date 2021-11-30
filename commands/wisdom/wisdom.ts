@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import { discord } from "../../discord";
+import { discord } from "../../models/discord";
 import { quotes } from "./quotes";
 
 export default function wisdom(message: Message) {

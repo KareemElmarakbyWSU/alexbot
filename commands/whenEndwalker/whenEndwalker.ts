@@ -1,6 +1,6 @@
 import { formatDuration, intervalToDuration } from "date-fns";
 import { Message } from "discord.js";
-import { discord } from "../../discord";
+import { discord } from "../../models/discord";
 
 const ENDWALKER_START = new Date(2021, 11, 3, 1);
 const SAVAGE_START = new Date(2021, 0, 4, 1);
