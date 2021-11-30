@@ -1,9 +1,9 @@
-import fs from "fs";
+import dotenv from "dotenv";
 import { commands } from "./commands/commands";
 import { client } from "./models/client";
 import { Message } from "./models/message";
 
-const CLIENT_SECRET = fs.readFileSync("./.CLIENT_SECRET", "utf8");
+dotenv.config();
 
 client.on("messageCreate", function (message) {
   for (const command of commands) {
@@ -13,4 +13,4 @@ client.on("messageCreate", function (message) {
   }
 });
 
-client.login(CLIENT_SECRET);
+client.login(process.env.DISCORD_CLIENT_SECRET);
