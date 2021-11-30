@@ -2,7 +2,7 @@ import { formatDuration, intervalToDuration } from "date-fns";
 import { Message } from "../../models/message";
 
 const ENDWALKER_START = new Date(2021, 11, 3, 1);
-const SAVAGE_START = new Date(2021, 0, 4, 1);
+const SAVAGE_START = new Date(2022, 0, 4, 1);
 
 export default function whenEndwalker(message: Message) {
   if (
