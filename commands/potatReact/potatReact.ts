@@ -1,12 +1,8 @@
-import { Message } from "discord.js";
-import { discord } from "../../models/discord";
+import { Message } from "../../models/Message";
 
 export default function potatReact(message: Message) {
-  if (message.author.id === "178623819223662592") {
-    const mentioned = message.mentions.members;
-    if (mentioned && mentioned.size) {
-      discord.react(message, "angyping");
-    }
+  if (message.isByAuthor("178623819223662592") && message.hasMentions()) {
+    message.react("angyping");
   }
   return false;
 }

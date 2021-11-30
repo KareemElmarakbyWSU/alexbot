@@ -1,9 +1,8 @@
-import { Message } from "discord.js";
-import { discord } from "../../models/discord";
+import { Message } from "../../models/message";
 
 export default function raidToday(message: Message) {
-  if (message.content.toLowerCase().includes("do we raid today")) {
-    discord.respond(message, "no");
+  if (message.hasTextMatch("do we raid today")) {
+    message.respond("no");
     return true;
   }
   return false;
