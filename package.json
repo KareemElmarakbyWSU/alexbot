@@ -11,9 +11,15 @@
     "discord.js": "^13.3.1"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "prettier": "prettier --check **/*.js",
+    "prettier-fix": "prettier --write **/*.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.0"
   }
 }
