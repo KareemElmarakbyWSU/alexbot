@@ -1,16 +1,45 @@
 import dotenv from "dotenv";
 import { commands } from "./commands/commands";
 import { client } from "./models/client";
+import { fflogs } from "./models/fflogs";
 import { Message } from "./models/message";
 
 dotenv.config();
 
-client.on("messageCreate", function (message) {
-  for (const command of commands) {
-    if (command(new Message(message))) {
-      return;
-    }
+async function initialize() {
+  if (!process.env.FFLOGS_CLIENT_ID || !process.env.FFLOGS_CLIENT_SECRET) {
+    console.log(
+      [
+        "FFLogs client information not detected",
+        "Create a new FFLogs v2 client at https://www.fflogs.com/api/clients/",
+        "Then set FFLOGS_CLIENT_ID and FFLOGS_CLIENT_SECRET in the .env file",
+      ].join("\n")
+    );
+    process.exitCode = 1;
+    return;
+  } else if (!process.env.DISCORD_CLIENT_SECRET) {
+    console.log([
+      "Discord client information not detected",
+      "Set DISCORD_CLIENT_SECRET in the .env file",
+    ]);
+    process.exitCode = 1;
+    return;
   }
-});
 
-client.login(process.env.DISCORD_CLIENT_SECRET);
+  await fflogs.initialize(
+    process.env.FFLOGS_CLIENT_ID,
+    process.env.FFLOGS_CLIENT_SECRET
+  );
+
+  client.on("messageCreate", function (message) {
+    for (const command of commands) {
+      if (command(new Message(message))) {
+        return;
+      }
+    }
+  });
+
+  client.login(process.env.DISCORD_CLIENT_SECRET);
+}
+
+initialize();
