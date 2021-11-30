@@ -9,5 +9,6 @@ export default function wisdom(client, message) {
     client.channels.cache
       .get(message.channelId)
       .send(`> Confucius says: ${quotes[Math.floor(Math.random() * 100)]}`);
+    return true;
   }
 }

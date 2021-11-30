@@ -22,6 +22,7 @@ export default function whenEndwalker(client, message) {
           { delimiter: ", " }
         )} from today`
       );
+      return true;
     } else {
       client.channels.cache.get(message.channelId).send(
         `Endwalker releases in ${formatDuration(
@@ -32,6 +33,7 @@ export default function whenEndwalker(client, message) {
           { delimiter: ", " }
         )}`
       );
+      return true;
     }
   }
 }
