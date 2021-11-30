@@ -5,7 +5,7 @@ const quotes = fs
   .split("\r\n");
 
 export default function wisdom(client, message) {
-  if (message.content.toLowerCase().indexOf("wisdom") !== -1) {
+  if (message.content.toLowerCase().includes("wisdom")) {
     client.channels.cache
       .get(message.channelId)
       .send(`> Confucius says: ${quotes[Math.floor(Math.random() * 100)]}`);
