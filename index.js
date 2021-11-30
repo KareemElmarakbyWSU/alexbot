@@ -25,10 +25,9 @@ const client = new Client({
 });
 
 client.on("messageCreate", function (message) {
-  let completed = false;
   for (const command of commands) {
-    if (!completed) {
-      completed = command(client, message);
+    if (command(client, message)) {
+      return;
     }
   }
 });
