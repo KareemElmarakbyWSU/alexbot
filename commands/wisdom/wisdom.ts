@@ -1,9 +1,11 @@
-import { Client, Message, TextChannel } from "discord.js";
+import { Message } from "discord.js";
+import { discord } from "../../discord";
 import { quotes } from "./quotes";
 
-export default function wisdom(client: Client, message: Message) {
+export default function wisdom(message: Message) {
   if (message.content.toLowerCase().includes("wisdom")) {
-    (client.channels.cache.get(message.channelId) as TextChannel).send(
+    discord.respond(
+      message,
       `> Confucius says: ${quotes[Math.floor(Math.random() * 100)]}`
     );
     return true;

@@ -1,8 +1,9 @@
-import { Client, Message, TextChannel } from "discord.js";
+import { Message } from "discord.js";
+import { discord } from "../../discord";
 
-export default function raidToday(client: Client, message: Message) {
+export default function raidToday(message: Message) {
   if (message.content.toLowerCase().includes("do we raid today")) {
-    (client.channels.cache.get(message.channelId) as TextChannel).send("no");
+    discord.respond(message, "no");
     return true;
   }
   return false;

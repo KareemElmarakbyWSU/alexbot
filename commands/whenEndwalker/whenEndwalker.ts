@@ -1,10 +1,11 @@
 import { formatDuration, intervalToDuration } from "date-fns";
-import { Client, Message, TextChannel } from "discord.js";
+import { Message } from "discord.js";
+import { discord } from "../../discord";
 
 const ENDWALKER_START = new Date(2021, 11, 3, 1);
 const SAVAGE_START = new Date(2021, 0, 4, 1);
 
-export default function whenEndwalker(client: Client, message: Message) {
+export default function whenEndwalker(message: Message) {
   const set = new Set(
     message.content
       .toLowerCase()
@@ -13,9 +14,9 @@ export default function whenEndwalker(client: Client, message: Message) {
   );
 
   if (set.has("when") && (set.has("ew") || set.has("endwalker"))) {
-    const channel = client.channels.cache.get(message.channelId) as TextChannel;
     if (set.has("savage")) {
-      channel.send(
+      discord.respond(
+        message,
         `Endwalker savage releases on Jan 4th, ${formatDuration(
           intervalToDuration({
             start: new Date(),
@@ -26,7 +27,8 @@ export default function whenEndwalker(client: Client, message: Message) {
       );
       return true;
     } else {
-      channel.send(
+      discord.respond(
+        message,
         `Endwalker releases in ${formatDuration(
           intervalToDuration({
             start: new Date(),
