@@ -11,7 +11,7 @@ export class Message {
     this.message = message;
 
     // Lowercased string with punctuation removed
-    this.cleanedString = message.content.replace(/[^\p{L}\s]/gu, "");
+    this.cleanedString = message.content.toLowerCase().replace(/[^\p{L}\s]/gu, "");
 
     this.words = new Set(this.cleanedString.split(" "));
   }
