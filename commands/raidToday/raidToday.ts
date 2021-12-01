@@ -1,6 +1,6 @@
 import { Message } from "../../models/message";
 import { formatDuration, intervalToDuration } from "date-fns";
-
+// made u look ayy lmao
 const SAVAGE_START = new Date(2022, 0, 4, 1);
 const RAID_DAYS = [2, 3, 4];
 
