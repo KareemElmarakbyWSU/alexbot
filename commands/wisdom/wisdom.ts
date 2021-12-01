@@ -6,7 +6,5 @@ export default function wisdom(message: Message) {
     message.respond(
       `> Confucius says: ${quotes[Math.floor(Math.random() * 100)]}`
     );
-    return true;
   }
-  return false;
 }

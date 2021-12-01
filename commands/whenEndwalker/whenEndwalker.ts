@@ -19,7 +19,6 @@ export default function whenEndwalker(message: Message) {
           { delimiter: ", " }
         )} from today`
       );
-      return true;
     } else {
       message.respond(
         `Endwalker releases in ${formatDuration(
@@ -30,8 +29,6 @@ export default function whenEndwalker(message: Message) {
           { delimiter: ", " }
         )}`
       );
-      return true;
     }
   }
-  return false;
 }

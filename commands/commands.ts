@@ -4,7 +4,7 @@ import whenEndwalker from "./whenEndwalker/whenEndwalker";
 import potatReact from "./potatReact/potatReact";
 import { Message } from "../models/message";
 
-export const commands: ((message: Message) => boolean)[] = [
+export const commands: ((message: Message) => void)[] = [
   potatReact,
   wisdom,
   raidToday,

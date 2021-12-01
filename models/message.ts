@@ -5,6 +5,7 @@ export class Message {
   message: DiscordMessage;
   cleanedString: string;
   words: Set<string>;
+  wasResponseSent: boolean = false;
 
   constructor(message: DiscordMessage) {
     this.message = message;
@@ -32,6 +33,7 @@ export class Message {
     (client.channels.cache.get(this.message.channelId) as TextChannel).send(
       response
     );
+    this.wasResponseSent = true;
   }
 
   react(name: string) {

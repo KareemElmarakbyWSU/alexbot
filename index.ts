@@ -33,7 +33,9 @@ async function initialize() {
 
   client.on("messageCreate", function (message) {
     for (const command of commands) {
-      if (command(new Message(message))) {
+      const m = new Message(message);
+      command(m);
+      if (m.wasResponseSent) {
         return;
       }
     }
