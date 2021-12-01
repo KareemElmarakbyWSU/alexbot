@@ -1,6 +1,7 @@
 import got from "got";
 import FormData from "form-data";
-import { GraphQLClient } from "graphql-request";
+import { GraphQLClient, gql } from "graphql-request";
+import { CharacterDataResponse } from "./fflogsTypes";
 
 class FFLogs {
   client: GraphQLClient;
@@ -32,11 +33,27 @@ class FFLogs {
         responseType: "json",
       }
     );
-
     this.client.setHeader(
       "authorization",
       `Bearer ${response.body["access_token"]}`
     );
+  }
+
+  async fetchCharacterData(id: number) {
+    const query = gql`
+      query ($id: Int) {
+        characterData {
+          character(id: $id) {
+            id
+            name
+            zoneRankings
+          }
+        }
+      }
+    `;
+    return await this.client.request<CharacterDataResponse>(query, {
+      id,
+    });
   }
 }
 
